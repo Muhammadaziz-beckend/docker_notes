@@ -1,0 +1,43 @@
+FROM python:3.9-slim
+
+COPY app.py /app/app.py
+
+WORKDIR /app
+
+CMD ['python','app.py']
+	
+	1) выбер базевого образа 3.9-slim
+	2) копируем app.py в контейнер
+	3) устоновливает рабочию деректорию контейнера
+	4) указывает команду которая будит выполнена при запуске контейнера
+----
+docker build -t my-python-app . - команда для сборки образа.
+	1) -t my-python-app - задаёт имя образа my-python-app
+	2) . - указывает на ткущую директорию для образа 
+docker run my-python-app - запускает образ на основе созданного образа 
+docker images - просмотер созданного образа 
+docker rmi my-python-app - удоляет образ
+------
+# django
+FROM python:3.11-slim  - загружает python образ
+
+WORKDIR /app - создания рабочей деректории
+
+COPY . /app/ - копирование всех файлов в контейнере
+
+
+RUN pip install -r requirements.txt - установка зависимоси
+
+
+EXPOSE 8000 - открывает порт на 8000
+
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"] - Запускает Django сервер, чтобы приложение было доступно на порту 8000.
+
+docker build -t ${name_image} . - 
+docker run -p 8000:8000 ${name_image}
+docker ps 
+docker ps -a
+docker stop ${id_container}
+
+# docker run -d -p 8000:8000 ${name_image}
