@@ -1,0 +1,11 @@
+docker ps - показывает все спущенные контейнеры
+docker ps -a - показывает все контейнеры
+docker images - показывает все образы
+docker rmi ${id_images | name_images} - удаляет образ
+docker build - для создания образа по инструкции Dockerfile (-t ${name_new_image})
+docker run ${name_image} - запускает контейнер 
+    flag:
+        1) -p - для обозначения порта 
+        2) -d - запускает в фоновом режиме
+docker stop ${id_container} - останавливает контейнер
+docker rm ${id_container} - удаляет контейнер
